@@ -1,0 +1,26 @@
+# Quartus temporary/output files
+db/
+incremental_db/
+output_files/
+*.rpt
+*.qws
+*.smsg
+*.chg
+*.bak
+*.done
+*.jdi
+*.pof
+*.sof
+*.pin
+*.cdf
+*.sdc~
+*.vcd
+*.wlf
+*.vho
+*.vqm
+*.log
+*.jbc
+*~
+
+# Simulation files
+simulation/modelsim/
