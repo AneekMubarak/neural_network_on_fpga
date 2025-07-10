@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Jul  9 23:23:18 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : neural_network_on_fpga
+Top-level Entity Name : mnist_nn
+Family : Cyclone IV E
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 2
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

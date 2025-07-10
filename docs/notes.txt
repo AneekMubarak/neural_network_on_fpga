@@ -1,0 +1,8 @@
+Single Layer NN
+
+1. Fixed point representation for floating point values is used, will create a small error compared to floating point.
+
+2. Results for the activation function (sigmoid) will be stored in an On-Chip ROM instead of implementing hardware to calculate the values. ROM will be addressed based on the parameter input for the function.
+
+3. Weights will also be stored in a ROM
+
