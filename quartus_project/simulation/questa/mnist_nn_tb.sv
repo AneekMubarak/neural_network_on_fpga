@@ -5,7 +5,7 @@
 module mnist_nn_tb();
 
 
-reg clk,reset;
+reg clk,reset,inp_rdy;
 
 wire [15:0] w_0, w_1;
 
@@ -26,6 +26,15 @@ initial
 initial
 reset = 1'b0;
 
+
+initial
+begin
+#0 inp_rdy = 1'b0;
+#10 inp_rdy = 1'b1;
+#200 inp_rdy = 1'b0;
+
+end
+
 initial begin
 	clk = 1'b1;
 	forever #1 clk = ~clk;
@@ -36,7 +45,8 @@ mnist_nn mnist_dut(.clk(clk),
 				   .inp_count(inp_count),
 				   .weight_value_0(w_0),
 				   .weight_value_1(w_1),
-				   .inp_count_d(inp_count_d)
+				   .inp_count_d(inp_count_d),
+				   .inp_rdy(inp_rdy)
 				   );
 
 

@@ -1,5 +1,5 @@
 Flow report for neural_network_on_fpga
-Thu Jul 10 20:38:34 2025
+Thu Jul 10 22:23:10 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,21 +41,21 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Thu Jul 10 20:38:34 2025          ;
+; Flow Status                        ; Successful - Thu Jul 10 22:23:10 2025          ;
 ; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                      ; neural_network_on_fpga                         ;
-; Top-level Entity Name              ; mnist_nn                                       ;
+; Top-level Entity Name              ; neuron                                         ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE115F29C7                                  ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 24 / 114,480 ( < 1 % )                         ;
-;     Total combinational functions  ; 14 / 114,480 ( < 1 % )                         ;
-;     Dedicated logic registers      ; 20 / 114,480 ( < 1 % )                         ;
-; Total registers                    ; 20                                             ;
-; Total pins                         ; 54 / 529 ( 10 % )                              ;
+; Total logic elements               ; 40 / 114,480 ( < 1 % )                         ;
+;     Total combinational functions  ; 40 / 114,480 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 35 / 114,480 ( < 1 % )                         ;
+; Total registers                    ; 35                                             ;
+; Total pins                         ; 60 / 529 ( 11 % )                              ;
 ; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 25,088 / 3,981,312 ( < 1 % )                   ;
-; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                          ;
+; Embedded Multiplier 9-bit elements ; 2 / 532 ( < 1 % )                              ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
 +------------------------------------+------------------------------------------------+
 
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 07/10/2025 20:38:08    ;
+; Start date & time ; 07/10/2025 22:22:43    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; neural_network_on_fpga ;
 +-------------------+------------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+------------------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value          ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+------------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 123870405650227.175220148830180        ; --                     ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 123870405650227.175220776327612        ; --                     ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                     ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                     ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                     ; --          ; eda_board_design_signal_integrity ;
@@ -90,13 +90,13 @@ https://fpgasoftware.intel.com/eula.
 ; MISC_FILE                           ; weight_mem2_bb.v                       ; --                     ; --          ; --                                ;
 ; MISC_FILE                           ; weight_mem0_bb.v                       ; --                     ; --          ; --                                ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --                     ; --          ; --                                ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --                     ; mnist_nn    ; Top                               ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --                     ; mnist_nn    ; Top                               ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --                     ; mnist_nn    ; Top                               ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --                     ; neuron      ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --                     ; neuron      ; Top                               ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --                     ; neuron      ; Top                               ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --                     ; --          ; --                                ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --                     ; --          ; --                                ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --                     ; --          ; --                                ;
-; TOP_LEVEL_ENTITY                    ; mnist_nn                               ; neural_network_on_fpga ; --          ; --                                ;
+; TOP_LEVEL_ENTITY                    ; neuron                                 ; neural_network_on_fpga ; --          ; --                                ;
 +-------------------------------------+----------------------------------------+------------------------+-------------+-----------------------------------+
 
 
@@ -105,12 +105,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 4782 MB             ; 00:00:17                           ;
-; Fitter               ; 00:00:11     ; 1.0                     ; 5736 MB             ; 00:00:15                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4780 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:12     ; 1.0                     ; 5736 MB             ; 00:00:16                           ;
 ; Assembler            ; 00:00:02     ; 1.0                     ; 4979 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 4881 MB             ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4664 MB             ; 00:00:00                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:36                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 4881 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4664 MB             ; 00:00:00                           ;
+; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:36                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

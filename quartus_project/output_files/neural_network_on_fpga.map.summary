@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Thu Jul 10 20:38:16 2025
+Analysis & Synthesis Status : Successful - Thu Jul 10 22:22:51 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : neural_network_on_fpga
-Top-level Entity Name : mnist_nn
+Top-level Entity Name : neuron
 Family : Cyclone IV E
-Total logic elements : 24
-    Total combinational functions : 14
-    Dedicated logic registers : 20
-Total registers : 20
-Total pins : 54
+Total logic elements : 40
+    Total combinational functions : 40
+    Dedicated logic registers : 35
+Total registers : 35
+Total pins : 60
 Total virtual pins : 0
-Total memory bits : 25,088
-Embedded Multiplier 9-bit elements : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 2
 Total PLLs : 0
