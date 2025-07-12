@@ -1,7 +1,7 @@
 m255
 K4
 z2
-Z0 !s12c _opt
+Z0 !s12c _opt1
 Z1 !s99 nomlopt
 R0
 R1
@@ -11,11 +11,41 @@ R0
 R1
 R0
 R1
-R0
+Z2 !s12c _opt
 R1
-R0
+R2
 R1
-Z2 !s12c _opt2
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+Z3 !s12c _opt2
+R1
+R3
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R2
 R1
 R2
 R1
@@ -27,27 +57,7 @@ R0
 R1
 R0
 R1
-R0
-R1
-R0
-R1
-R0
-R1
-R0
-R1
-R0
-R1
-R0
-R1
-Z3 !s12c _opt1
-R1
-R3
-R1
-R3
-R1
-R3
-R1
-R0
+R2
 R1
 !s11f vlog 2023.3 2023.07, Jul 17 2023
 13
@@ -65,23 +75,23 @@ Z5 04 11 4 work mnist_nn_tb fast 0
 R1
 Z6 !s12b OEM100
 Z7 !s124 OEM10U3 
-o-quiet -auto_acc_if_foreign -work work -L altera_mf_ver -L altera_ver -L cycloneive_ver +acc
-Z8 tCvgOpt 0
+Z8 o-quiet -auto_acc_if_foreign -work work -L altera_mf_ver -L altera_ver -L cycloneive_ver +acc
+Z9 tCvgOpt 0
 n@_opt
-Z9 OL;O;2023.3;77
+Z10 OL;O;2023.3;77
+R4
 T_opt1
-!s110 1752196025
-VOZhC:^]Q__I>=D9KA:75l2
-R5
-=1-70a8d386e732-687063b9-75-306c
+!s110 1752361623
+VbOckDK;7zY4AH2^S:mFg[3
+04 9 4 work neuron_tb fast 0
+=1-70a8d386e732-6872ea97-17a-526c
 R1
 R6
 R7
-o-quiet -auto_acc_if_foreign -work work -L cycloneive_ver -L altera_ver -L altera_mf_ver +acc
 R8
-n@_opt1
 R9
-R4
+n@_opt1
+R10
 T_opt2
 !s110 1752201540
 VNC4LCAhHb3HKG]LzC`J?V1
@@ -91,78 +101,126 @@ R1
 R6
 R7
 o-quiet -auto_acc_if_foreign -work work -L altera_ver -L altera_mf_ver -L cycloneive_ver +acc
-R8
-n@_opt2
 R9
+n@_opt2
+R10
 R4
 vhard_block
-Z10 2E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
-Z11 !s110 1752205666
+Z11 2E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
+Z12 !s110 1752361613
 !i10b 1
-!s100 cEf@KC9;7Adg=R3mBDE671
-IC^QRz;bN3Pg9aN`V>ZfPM0
-Z12 dE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa
-Z13 w1752205470
-Z14 8E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
-Z15 FE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
-!i122 59
-L0 2201 34
-Z16 VDg1SIo80bB@j0V0VzS_@n1
-Z17 OL;L;2023.3;77
+!s100 SzzXU7OioC2D<:gB?=oGP3
+IXo]zNN]JdKB?9m`FnV6YJ2
+Z13 dE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa
+Z14 w1752361587
+Z15 8E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
+Z16 FE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
+!i122 71
+L0 6099 34
+Z17 VDg1SIo80bB@j0V0VzS_@n1
+Z18 OL;L;2023.3;77
 r1
 !s85 0
 31
-Z18 !s108 1752205666.000000
-Z19 !s107 E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
-Z20 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
+Z19 !s108 1752361613.000000
+Z20 !s107 E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
+Z21 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
 !i113 0
-Z21 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R8
+Z22 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R9
 vmnist_nn
-R10
 R11
+Z23 !s110 1752205666
 !i10b 1
 !s100 LREGLzh[gEKDX=d[[?24g0
 IbIcUC4dhX44T];WS`USeU1
-R12
 R13
-R14
+w1752205470
 R15
+R16
 !i122 59
 L0 32 2168
-R16
 R17
+R18
 r1
 !s85 0
 31
-R18
-R19
+Z24 !s108 1752205666.000000
 R20
-!i113 0
 R21
-R8
+!i113 0
+R22
+R9
 vmnist_nn_tb
 2E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv
-DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-R11
+Z25 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R23
 !i10b 1
 !s100 N@]QzH]lH`gM=QK7=Z@L80
 IH3R6>F?fH4U`X78E3Q1@F1
 S1
-R12
+R13
 w1752204961
 8E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv
 FE:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv
 !i122 60
 L0 5 51
-R16
 R17
+R18
 r1
 !s85 0
 31
-R18
+R24
 !s107 E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv|
 !i113 0
-o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R8
+Z26 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R9
+vneuron
+R11
+R12
+!i10b 1
+!s100 Ii[IVe7[MfnU39>PX:UY[0
+IzaAleZ`V3bYYB<kf6I5Tf1
+R13
+R14
+R15
+R16
+!i122 71
+L0 32 6066
+R17
+R18
+r1
+!s85 0
+31
+R19
+R20
+R21
+!i113 0
+R22
+R9
+vneuron_tb
+2E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv
+R25
+R12
+!i10b 1
+!s100 _SGLbj@]EaA6AKZ<^8QnO0
+ImdFSI79:AA6oa30E>J6YH1
+S1
+R13
+w1752358870
+8E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv
+FE:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv
+!i122 72
+L0 4 83
+R17
+R18
+r1
+!s85 0
+31
+R19
+!s107 E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv|
+!i113 0
+R26
+R9
