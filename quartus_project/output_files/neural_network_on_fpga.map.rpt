@@ -1,5 +1,5 @@
 Analysis & Synthesis report for neural_network_on_fpga
-Sat Jul 12 17:06:02 2025
+Mon Jul 14 22:42:57 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -13,14 +13,29 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis DSP Block Usage Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 12. lpm_mult Parameter Settings by Entity Instance
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. Analysis & Synthesis IP Cores Summary
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated
+ 15. Source assignments for weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated
+ 16. Source assignments for neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated
+ 17. Source assignments for neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated
+ 18. Parameter Settings for User Entity Instance: weight_mem0:neuron0_weights|altsyncram:altsyncram_component
+ 19. Parameter Settings for User Entity Instance: weight_mem1:neuron1_weights|altsyncram:altsyncram_component
+ 20. Parameter Settings for User Entity Instance: neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component
+ 21. Parameter Settings for User Entity Instance: neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component
+ 22. Parameter Settings for Inferred Entity Instance: neuron:n0|lpm_mult:Mult0
+ 23. Parameter Settings for Inferred Entity Instance: neuron:n1|lpm_mult:Mult0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. lpm_mult Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "neuron:n1"
+ 27. Port Connectivity Checks: "neuron:n0"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
 
 
 
@@ -47,19 +62,19 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jul 12 17:06:02 2025          ;
+; Analysis & Synthesis Status        ; Successful - Mon Jul 14 22:42:57 2025          ;
 ; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                      ; neural_network_on_fpga                         ;
-; Top-level Entity Name              ; neuron                                         ;
+; Top-level Entity Name              ; mnist_nn                                       ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 112                                            ;
-;     Total combinational functions  ; 112                                            ;
-;     Dedicated logic registers      ; 59                                             ;
-; Total registers                    ; 59                                             ;
-; Total pins                         ; 158                                            ;
+; Total logic elements               ; 188                                            ;
+;     Total combinational functions  ; 183                                            ;
+;     Dedicated logic registers      ; 136                                            ;
+; Total registers                    ; 136                                            ;
+; Total pins                         ; 79                                             ;
 ; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 0                                              ;
-; Embedded Multiplier 9-bit elements ; 2                                              ;
+; Total memory bits                  ; 90,624                                         ;
+; Embedded Multiplier 9-bit elements ; 4                                              ;
 ; Total PLLs                         ; 0                                              ;
 +------------------------------------+------------------------------------------------+
 
@@ -70,7 +85,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value          ;
 +------------------------------------------------------------------+--------------------+------------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                        ;
-; Top-level entity name                                            ; neuron             ; neural_network_on_fpga ;
+; Top-level entity name                                            ; mnist_nn           ; neural_network_on_fpga ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V              ;
 ; Use smart compilation                                            ; Off                ; Off                    ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                     ;
@@ -167,64 +182,111 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
-; neuron.sv                        ; yes             ; User SystemVerilog HDL File  ; E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv       ;         ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_mult.tdf      ;         ;
-; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/aglobal231.inc    ;         ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_add_sub.inc   ;         ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/multcore.inc      ;         ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/bypassff.inc      ;         ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/intel/quartus/quartus/libraries/megafunctions/altshift.inc      ;         ;
-; db/mult_36t.tdf                  ; yes             ; Auto-Generated Megafunction  ; E:/Projects/neural-network-on-fpga/quartus_project/db/mult_36t.tdf ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                     ; Library ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------+---------+
+; weight_memories/weights_1.mif    ; yes             ; User Memory Initialization File  ; E:/Projects/neural-network-on-fpga/quartus_project/weight_memories/weights_1.mif ;         ;
+; weight_memories/weights_0.mif    ; yes             ; User Memory Initialization File  ; E:/Projects/neural-network-on-fpga/quartus_project/weight_memories/weights_0.mif ;         ;
+; sigmoid_q5_7.mif                 ; yes             ; User Memory Initialization File  ; E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_q5_7.mif              ;         ;
+; neuron.sv                        ; yes             ; User SystemVerilog HDL File      ; E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv                     ;         ;
+; mnist_nn.sv                      ; yes             ; User SystemVerilog HDL File      ; E:/Projects/neural-network-on-fpga/quartus_project/mnist_nn.sv                   ;         ;
+; weight_mem1.v                    ; yes             ; User Wizard-Generated File       ; E:/Projects/neural-network-on-fpga/quartus_project/weight_mem1.v                 ;         ;
+; weight_mem0.v                    ; yes             ; User Wizard-Generated File       ; E:/Projects/neural-network-on-fpga/quartus_project/weight_mem0.v                 ;         ;
+; sigmoid_mem.v                    ; yes             ; User Wizard-Generated File       ; E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_mem.v                 ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/altsyncram.tdf                  ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/stratix_ram_block.inc           ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_mux.inc                     ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_decode.inc                  ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/aglobal231.inc                  ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/a_rdenreg.inc                   ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/altrom.inc                      ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/altram.inc                      ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/altdpram.inc                    ;         ;
+; db/altsyncram_5ub1.tdf           ; yes             ; Auto-Generated Megafunction      ; E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_5ub1.tdf        ;         ;
+; db/altsyncram_6ub1.tdf           ; yes             ; Auto-Generated Megafunction      ; E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_6ub1.tdf        ;         ;
+; db/altsyncram_hfa1.tdf           ; yes             ; Auto-Generated Megafunction      ; E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_hfa1.tdf        ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_mult.tdf                    ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/lpm_add_sub.inc                 ;         ;
+; multcore.inc                     ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/multcore.inc                    ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/bypassff.inc                    ;         ;
+; altshift.inc                     ; yes             ; Megafunction                     ; c:/intel/quartus/quartus/libraries/megafunctions/altshift.inc                    ;         ;
+; db/mult_36t.tdf                  ; yes             ; Auto-Generated Megafunction      ; E:/Projects/neural-network-on-fpga/quartus_project/db/mult_36t.tdf               ;         ;
++----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                   ;
-+---------------------------------------------+-------------------------------------------------+
-; Resource                                    ; Usage                                           ;
-+---------------------------------------------+-------------------------------------------------+
-; Estimated Total logic elements              ; 112                                             ;
-;                                             ;                                                 ;
-; Total combinational functions               ; 112                                             ;
-; Logic element usage by number of LUT inputs ;                                                 ;
-;     -- 4 input functions                    ; 3                                               ;
-;     -- 3 input functions                    ; 58                                              ;
-;     -- <=2 input functions                  ; 51                                              ;
-;                                             ;                                                 ;
-; Logic elements by mode                      ;                                                 ;
-;     -- normal mode                          ; 12                                              ;
-;     -- arithmetic mode                      ; 100                                             ;
-;                                             ;                                                 ;
-; Total registers                             ; 59                                              ;
-;     -- Dedicated logic registers            ; 59                                              ;
-;     -- I/O registers                        ; 0                                               ;
-;                                             ;                                                 ;
-; I/O pins                                    ; 158                                             ;
-;                                             ;                                                 ;
-; Embedded Multiplier 9-bit elements          ; 2                                               ;
-;                                             ;                                                 ;
-; Maximum fan-out node                        ; lpm_mult:Mult0|mult_36t:auto_generated|mac_out2 ;
-; Maximum fan-out                             ; 64                                              ;
-; Total fan-out                               ; 841                                             ;
-; Average fan-out                             ; 1.72                                            ;
-+---------------------------------------------+-------------------------------------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 188       ;
+;                                             ;           ;
+; Total combinational functions               ; 183       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 19        ;
+;     -- 3 input functions                    ; 91        ;
+;     -- <=2 input functions                  ; 73        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 59        ;
+;     -- arithmetic mode                      ; 124       ;
+;                                             ;           ;
+; Total registers                             ; 136       ;
+;     -- Dedicated logic registers            ; 136       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 79        ;
+; Total memory bits                           ; 90624     ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 4         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 184       ;
+; Total fan-out                               ; 1836      ;
+; Average fan-out                             ; 3.47      ;
++---------------------------------------------+-----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                      ;
-+---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+-------------+--------------+
-; Compilation Hierarchy Node      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                            ; Entity Name ; Library Name ;
-+---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+-------------+--------------+
-; |neuron                         ; 112 (112)           ; 59 (59)                   ; 0           ; 2            ; 0       ; 1         ; 158  ; 0            ; |neuron                                        ; neuron      ; work         ;
-;    |lpm_mult:Mult0|             ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |neuron|lpm_mult:Mult0                         ; lpm_mult    ; work         ;
-;       |mult_36t:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |neuron|lpm_mult:Mult0|mult_36t:auto_generated ; mult_36t    ; work         ;
-+---------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------+-------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                    ; Entity Name     ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |mnist_nn                                    ; 183 (15)            ; 136 (10)                  ; 90624       ; 4            ; 0       ; 2         ; 79   ; 0            ; |mnist_nn                                                                                              ; mnist_nn        ; work         ;
+;    |neuron:n0|                               ; 92 (91)             ; 69 (68)                   ; 32768       ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n0                                                                                    ; neuron          ; work         ;
+;       |lpm_mult:Mult0|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n0|lpm_mult:Mult0                                                                     ; lpm_mult        ; work         ;
+;          |mult_36t:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n0|lpm_mult:Mult0|mult_36t:auto_generated                                             ; mult_36t        ; work         ;
+;       |sigmoid_mem:sig_mem|                  ; 1 (0)               ; 1 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n0|sigmoid_mem:sig_mem                                                                ; sigmoid_mem     ; work         ;
+;          |altsyncram:altsyncram_component|   ; 1 (0)               ; 1 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;             |altsyncram_hfa1:auto_generated| ; 1 (1)               ; 1 (1)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated ; altsyncram_hfa1 ; work         ;
+;    |neuron:n1|                               ; 75 (75)             ; 56 (56)                   ; 32768       ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n1                                                                                    ; neuron          ; work         ;
+;       |lpm_mult:Mult0|                       ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n1|lpm_mult:Mult0                                                                     ; lpm_mult        ; work         ;
+;          |mult_36t:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |mnist_nn|neuron:n1|lpm_mult:Mult0|mult_36t:auto_generated                                             ; mult_36t        ; work         ;
+;       |sigmoid_mem:sig_mem|                  ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n1|sigmoid_mem:sig_mem                                                                ; sigmoid_mem     ; work         ;
+;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;             |altsyncram_hfa1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated ; altsyncram_hfa1 ; work         ;
+;    |weight_mem0:neuron0_weights|             ; 1 (0)               ; 1 (0)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem0:neuron0_weights                                                                  ; weight_mem0     ; work         ;
+;       |altsyncram:altsyncram_component|      ; 1 (0)               ; 1 (0)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem0:neuron0_weights|altsyncram:altsyncram_component                                  ; altsyncram      ; work         ;
+;          |altsyncram_5ub1:auto_generated|    ; 1 (1)               ; 1 (1)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated   ; altsyncram_5ub1 ; work         ;
+;    |weight_mem1:neuron1_weights|             ; 0 (0)               ; 0 (0)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem1:neuron1_weights                                                                  ; weight_mem1     ; work         ;
+;       |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem1:neuron1_weights|altsyncram:altsyncram_component                                  ; altsyncram      ; work         ;
+;          |altsyncram_6ub1:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 12544       ; 0            ; 0       ; 0         ; 0    ; 0            ; |mnist_nn|weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated   ; altsyncram_6ub1 ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                            ;
++---------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------+
+; Name                                                                                                    ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                             ;
++---------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------+
+; neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 8            ; --           ; --           ; 32768 ; sigmoid_q5_7.mif                ;
+; neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 8            ; --           ; --           ; 32768 ; sigmoid_q5_7.mif                ;
+; weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated|ALTSYNCRAM   ; AUTO ; ROM  ; 784          ; 16           ; --           ; --           ; 12544 ; ./weight_memories/weights_0.mif ;
+; weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated|ALTSYNCRAM   ; AUTO ; ROM  ; 784          ; 16           ; --           ; --           ; 12544 ; ./weight_memories/weights_1.mif ;
++---------------------------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+---------------------------------+
 
 
 +-----------------------------------------------------+
@@ -233,10 +295,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                             ; Number Used ;
 +---------------------------------------+-------------+
 ; Simple Multipliers (9-bit)            ; 0           ;
-; Simple Multipliers (18-bit)           ; 1           ;
+; Simple Multipliers (18-bit)           ; 2           ;
 ; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 2           ;
-; Signed Embedded Multipliers           ; 1           ;
+; Embedded Multiplier 9-bit elements    ; 4           ;
+; Signed Embedded Multipliers           ; 2           ;
 ; Unsigned Embedded Multipliers         ; 0           ;
 ; Mixed Sign Embedded Multipliers       ; 0           ;
 ; Variable Sign Embedded Multipliers    ; 0           ;
@@ -245,34 +307,353 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
 
 
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                     ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                         ; IP Include File ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------+-----------------+
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |mnist_nn|neuron:n0|sigmoid_mem:sig_mem ; sigmoid_mem.v   ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |mnist_nn|neuron:n1|sigmoid_mem:sig_mem ; sigmoid_mem.v   ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |mnist_nn|weight_mem0:neuron0_weights   ; weight_mem0.v   ;
+; Altera ; ROM: 1-PORT  ; 23.1    ; N/A          ; N/A          ; |mnist_nn|weight_mem1:neuron1_weights   ; weight_mem1.v   ;
++--------+--------------+---------+--------------+--------------+-----------------------------------------+-----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                             ; Reason for Removal                                                                                                    ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated|rden_a_store   ; Merged with weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated|rden_a_store   ;
+; neuron:n1|out_ready                                                                                       ; Merged with neuron:n0|out_ready                                                                                       ;
+; neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated|rden_a_store ; Merged with neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated|rden_a_store ;
+; neuron:n1|out_ready_d                                                                                     ; Merged with neuron:n0|out_ready_d                                                                                     ;
+; neuron:n1|count[9]                                                                                        ; Merged with neuron:n0|count[9]                                                                                        ;
+; neuron:n1|count[8]                                                                                        ; Merged with neuron:n0|count[8]                                                                                        ;
+; neuron:n1|count[3]                                                                                        ; Merged with neuron:n0|count[3]                                                                                        ;
+; neuron:n1|count[2]                                                                                        ; Merged with neuron:n0|count[2]                                                                                        ;
+; neuron:n1|count[1]                                                                                        ; Merged with neuron:n0|count[1]                                                                                        ;
+; neuron:n1|count[0]                                                                                        ; Merged with neuron:n0|count[0]                                                                                        ;
+; neuron:n1|count[7]                                                                                        ; Merged with neuron:n0|count[7]                                                                                        ;
+; neuron:n1|count[6]                                                                                        ; Merged with neuron:n0|count[6]                                                                                        ;
+; neuron:n1|count[5]                                                                                        ; Merged with neuron:n0|count[5]                                                                                        ;
+; neuron:n1|count[4]                                                                                        ; Merged with neuron:n0|count[4]                                                                                        ;
+; Total Number of Removed Registers = 14                                                                    ;                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 59    ;
-; Number of registers using Synchronous Clear  ; 58    ;
-; Number of registers using Synchronous Load   ; 26    ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 136   ;
+; Number of registers using Synchronous Clear  ; 129   ;
+; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Asynchronous Clear ; 3     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 48    ;
+; Number of registers using Clock Enable       ; 64    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |neuron|acc[26]~reg0       ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |neuron|count[2]~reg0      ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |neuron|out[1]~reg0        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 64 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |mnist_nn|neuron:n0|acc[8]              ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |mnist_nn|neuron:n0|acc_final[29]       ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |mnist_nn|neuron:n1|acc_final[25]       ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mnist_nn|inp_count[9]~reg0             ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |mnist_nn|neuron:n0|count[7]            ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mnist_nn|neuron:n0|sigmoid_address[3]  ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |mnist_nn|neuron:n1|sigmoid_address[11] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Source assignments for weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                  ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                   ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Source assignments for weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                  ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                   ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Source assignments for neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                    ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                     ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Source assignments for neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                    ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                     ;
++---------------------------------+--------------------+------+-------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: weight_mem0:neuron0_weights|altsyncram:altsyncram_component ;
++------------------------------------+---------------------------------+-----------------------------------+
+; Parameter Name                     ; Value                           ; Type                              ;
++------------------------------------+---------------------------------+-----------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                               ; Untyped                           ;
+; AUTO_CARRY_CHAINS                  ; ON                              ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                             ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS                ; ON                              ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                             ; IGNORE_CASCADE                    ;
+; WIDTH_BYTEENA                      ; 1                               ; Untyped                           ;
+; OPERATION_MODE                     ; ROM                             ; Untyped                           ;
+; WIDTH_A                            ; 16                              ; Signed Integer                    ;
+; WIDTHAD_A                          ; 10                              ; Signed Integer                    ;
+; NUMWORDS_A                         ; 784                             ; Signed Integer                    ;
+; OUTDATA_REG_A                      ; CLOCK0                          ; Untyped                           ;
+; ADDRESS_ACLR_A                     ; NONE                            ; Untyped                           ;
+; OUTDATA_ACLR_A                     ; NONE                            ; Untyped                           ;
+; WRCONTROL_ACLR_A                   ; NONE                            ; Untyped                           ;
+; INDATA_ACLR_A                      ; NONE                            ; Untyped                           ;
+; BYTEENA_ACLR_A                     ; NONE                            ; Untyped                           ;
+; WIDTH_B                            ; 1                               ; Untyped                           ;
+; WIDTHAD_B                          ; 1                               ; Untyped                           ;
+; NUMWORDS_B                         ; 1                               ; Untyped                           ;
+; INDATA_REG_B                       ; CLOCK1                          ; Untyped                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                          ; Untyped                           ;
+; RDCONTROL_REG_B                    ; CLOCK1                          ; Untyped                           ;
+; ADDRESS_REG_B                      ; CLOCK1                          ; Untyped                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED                    ; Untyped                           ;
+; BYTEENA_REG_B                      ; CLOCK1                          ; Untyped                           ;
+; INDATA_ACLR_B                      ; NONE                            ; Untyped                           ;
+; WRCONTROL_ACLR_B                   ; NONE                            ; Untyped                           ;
+; ADDRESS_ACLR_B                     ; NONE                            ; Untyped                           ;
+; OUTDATA_ACLR_B                     ; NONE                            ; Untyped                           ;
+; RDCONTROL_ACLR_B                   ; NONE                            ; Untyped                           ;
+; BYTEENA_ACLR_B                     ; NONE                            ; Untyped                           ;
+; WIDTH_BYTEENA_A                    ; 1                               ; Signed Integer                    ;
+; WIDTH_BYTEENA_B                    ; 1                               ; Untyped                           ;
+; RAM_BLOCK_TYPE                     ; AUTO                            ; Untyped                           ;
+; BYTE_SIZE                          ; 8                               ; Untyped                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                       ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ            ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ            ; Untyped                           ;
+; INIT_FILE                          ; ./weight_memories/weights_0.mif ; Untyped                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A                          ; Untyped                           ;
+; MAXIMUM_DEPTH                      ; 0                               ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS                          ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                          ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                          ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                          ; Untyped                           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                 ; Untyped                           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                 ; Untyped                           ;
+; ENABLE_ECC                         ; FALSE                           ; Untyped                           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                           ; Untyped                           ;
+; WIDTH_ECCSTATUS                    ; 3                               ; Untyped                           ;
+; DEVICE_FAMILY                      ; Cyclone IV E                    ; Untyped                           ;
+; CBXI_PARAMETER                     ; altsyncram_5ub1                 ; Untyped                           ;
++------------------------------------+---------------------------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: weight_mem1:neuron1_weights|altsyncram:altsyncram_component ;
++------------------------------------+---------------------------------+-----------------------------------+
+; Parameter Name                     ; Value                           ; Type                              ;
++------------------------------------+---------------------------------+-----------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                               ; Untyped                           ;
+; AUTO_CARRY_CHAINS                  ; ON                              ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                             ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS                ; ON                              ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                             ; IGNORE_CASCADE                    ;
+; WIDTH_BYTEENA                      ; 1                               ; Untyped                           ;
+; OPERATION_MODE                     ; ROM                             ; Untyped                           ;
+; WIDTH_A                            ; 16                              ; Signed Integer                    ;
+; WIDTHAD_A                          ; 10                              ; Signed Integer                    ;
+; NUMWORDS_A                         ; 784                             ; Signed Integer                    ;
+; OUTDATA_REG_A                      ; CLOCK0                          ; Untyped                           ;
+; ADDRESS_ACLR_A                     ; NONE                            ; Untyped                           ;
+; OUTDATA_ACLR_A                     ; NONE                            ; Untyped                           ;
+; WRCONTROL_ACLR_A                   ; NONE                            ; Untyped                           ;
+; INDATA_ACLR_A                      ; NONE                            ; Untyped                           ;
+; BYTEENA_ACLR_A                     ; NONE                            ; Untyped                           ;
+; WIDTH_B                            ; 1                               ; Untyped                           ;
+; WIDTHAD_B                          ; 1                               ; Untyped                           ;
+; NUMWORDS_B                         ; 1                               ; Untyped                           ;
+; INDATA_REG_B                       ; CLOCK1                          ; Untyped                           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                          ; Untyped                           ;
+; RDCONTROL_REG_B                    ; CLOCK1                          ; Untyped                           ;
+; ADDRESS_REG_B                      ; CLOCK1                          ; Untyped                           ;
+; OUTDATA_REG_B                      ; UNREGISTERED                    ; Untyped                           ;
+; BYTEENA_REG_B                      ; CLOCK1                          ; Untyped                           ;
+; INDATA_ACLR_B                      ; NONE                            ; Untyped                           ;
+; WRCONTROL_ACLR_B                   ; NONE                            ; Untyped                           ;
+; ADDRESS_ACLR_B                     ; NONE                            ; Untyped                           ;
+; OUTDATA_ACLR_B                     ; NONE                            ; Untyped                           ;
+; RDCONTROL_ACLR_B                   ; NONE                            ; Untyped                           ;
+; BYTEENA_ACLR_B                     ; NONE                            ; Untyped                           ;
+; WIDTH_BYTEENA_A                    ; 1                               ; Signed Integer                    ;
+; WIDTH_BYTEENA_B                    ; 1                               ; Untyped                           ;
+; RAM_BLOCK_TYPE                     ; AUTO                            ; Untyped                           ;
+; BYTE_SIZE                          ; 8                               ; Untyped                           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                       ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ            ; Untyped                           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ            ; Untyped                           ;
+; INIT_FILE                          ; ./weight_memories/weights_1.mif ; Untyped                           ;
+; INIT_FILE_LAYOUT                   ; PORT_A                          ; Untyped                           ;
+; MAXIMUM_DEPTH                      ; 0                               ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS                          ; Untyped                           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                          ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                          ; Untyped                           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                          ; Untyped                           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                 ; Untyped                           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                 ; Untyped                           ;
+; ENABLE_ECC                         ; FALSE                           ; Untyped                           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                           ; Untyped                           ;
+; WIDTH_ECCSTATUS                    ; 3                               ; Untyped                           ;
+; DEVICE_FAMILY                      ; Cyclone IV E                    ; Untyped                           ;
+; CBXI_PARAMETER                     ; altsyncram_6ub1                 ; Untyped                           ;
++------------------------------------+---------------------------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                           ;
++------------------------------------+----------------------+------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                        ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                        ;
+; WIDTH_A                            ; 8                    ; Signed Integer                                 ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                 ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                 ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; WIDTH_B                            ; 1                    ; Untyped                                        ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                        ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                        ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                 ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                        ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                        ;
+; INIT_FILE                          ; sigmoid_q5_7.mif     ; Untyped                                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                        ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                        ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                                        ;
+; CBXI_PARAMETER                     ; altsyncram_hfa1      ; Untyped                                        ;
++------------------------------------+----------------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                           ;
++------------------------------------+----------------------+------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                        ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                        ;
+; WIDTH_A                            ; 8                    ; Signed Integer                                 ;
+; WIDTHAD_A                          ; 12                   ; Signed Integer                                 ;
+; NUMWORDS_A                         ; 4096                 ; Signed Integer                                 ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                        ;
+; WIDTH_B                            ; 1                    ; Untyped                                        ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                        ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                        ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                 ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                        ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                        ;
+; INIT_FILE                          ; sigmoid_q5_7.mif     ; Untyped                                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                        ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                        ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                                        ;
+; CBXI_PARAMETER                     ; altsyncram_hfa1      ; Untyped                                        ;
++------------------------------------+----------------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                     ;
+; Parameter Settings for Inferred Entity Instance: neuron:n0|lpm_mult:Mult0           ;
 +------------------------------------------------+--------------+---------------------+
 ; Parameter Name                                 ; Value        ; Type                ;
 +------------------------------------------------+--------------+---------------------+
@@ -306,24 +687,163 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance         ;
-+---------------------------------------+----------------+
-; Name                                  ; Value          ;
-+---------------------------------------+----------------+
-; Number of entity instances            ; 1              ;
-; Entity Instance                       ; lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 16             ;
-;     -- LPM_WIDTHB                     ; 16             ;
-;     -- LPM_WIDTHP                     ; 32             ;
-;     -- LPM_REPRESENTATION             ; SIGNED         ;
-;     -- INPUT_A_IS_CONSTANT            ; NO             ;
-;     -- INPUT_B_IS_CONSTANT            ; NO             ;
-;     -- USE_EAB                        ; OFF            ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
-+---------------------------------------+----------------+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: neuron:n1|lpm_mult:Mult0           ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 16           ; Untyped             ;
+; LPM_WIDTHB                                     ; 16           ; Untyped             ;
+; LPM_WIDTHP                                     ; 32           ; Untyped             ;
+; LPM_WIDTHR                                     ; 32           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_36t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                          ;
++-------------------------------------------+---------------------------------------------------------------+
+; Name                                      ; Value                                                         ;
++-------------------------------------------+---------------------------------------------------------------+
+; Number of entity instances                ; 4                                                             ;
+; Entity Instance                           ; weight_mem0:neuron0_weights|altsyncram:altsyncram_component   ;
+;     -- OPERATION_MODE                     ; ROM                                                           ;
+;     -- WIDTH_A                            ; 16                                                            ;
+;     -- NUMWORDS_A                         ; 784                                                           ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                        ;
+;     -- WIDTH_B                            ; 1                                                             ;
+;     -- NUMWORDS_B                         ; 1                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                     ;
+; Entity Instance                           ; weight_mem1:neuron1_weights|altsyncram:altsyncram_component   ;
+;     -- OPERATION_MODE                     ; ROM                                                           ;
+;     -- WIDTH_A                            ; 16                                                            ;
+;     -- NUMWORDS_A                         ; 784                                                           ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                        ;
+;     -- WIDTH_B                            ; 1                                                             ;
+;     -- NUMWORDS_B                         ; 1                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                     ;
+; Entity Instance                           ; neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                           ;
+;     -- WIDTH_A                            ; 8                                                             ;
+;     -- NUMWORDS_A                         ; 4096                                                          ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                        ;
+;     -- WIDTH_B                            ; 1                                                             ;
+;     -- NUMWORDS_B                         ; 1                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                     ;
+; Entity Instance                           ; neuron:n1|sigmoid_mem:sig_mem|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                           ;
+;     -- WIDTH_A                            ; 8                                                             ;
+;     -- NUMWORDS_A                         ; 4096                                                          ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                                        ;
+;     -- WIDTH_B                            ; 1                                                             ;
+;     -- NUMWORDS_B                         ; 1                                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                     ;
++-------------------------------------------+---------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                   ;
++---------------------------------------+--------------------------+
+; Name                                  ; Value                    ;
++---------------------------------------+--------------------------+
+; Number of entity instances            ; 2                        ;
+; Entity Instance                       ; neuron:n0|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16                       ;
+;     -- LPM_WIDTHB                     ; 16                       ;
+;     -- LPM_WIDTHP                     ; 32                       ;
+;     -- LPM_REPRESENTATION             ; SIGNED                   ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
+; Entity Instance                       ; neuron:n1|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16                       ;
+;     -- LPM_WIDTHB                     ; 16                       ;
+;     -- LPM_WIDTHP                     ; 32                       ;
+;     -- LPM_REPRESENTATION             ; SIGNED                   ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
++---------------------------------------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "neuron:n1"                                                                                                          ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                  ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; bias[3..2]      ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[15..8]     ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; bias[6..4]      ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; bias[1..0]      ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; bias[7]         ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; product_q16_16  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; acc             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; acc_final       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; count           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; sigmoid_address ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; out_ready       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "neuron:n0"                                                                                                          ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                  ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; bias[15..8]     ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[1..0]      ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[5..4]      ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; bias[7]         ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; bias[6]         ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[3]         ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[2]         ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; product_q16_16  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; acc             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; acc_final       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; count           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; sigmoid_address ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; out_ready       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -331,27 +851,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 158                         ;
-; cycloneiii_ff         ; 59                          ;
-;     ENA SCLR          ; 32                          ;
-;     ENA SCLR SLD      ; 16                          ;
+; boundary_port         ; 79                          ;
+; cycloneiii_ff         ; 136                         ;
+;     CLR               ; 3                           ;
+;     ENA SCLR          ; 64                          ;
+;     SCLR              ; 55                          ;
 ;     SCLR SLD          ; 10                          ;
-;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 112                         ;
-;     arith             ; 100                         ;
-;         2 data inputs ; 44                          ;
-;         3 data inputs ; 56                          ;
-;     normal            ; 12                          ;
+;     plain             ; 4                           ;
+; cycloneiii_lcell_comb ; 183                         ;
+;     arith             ; 124                         ;
+;         2 data inputs ; 61                          ;
+;         3 data inputs ; 63                          ;
+;     normal            ; 59                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 2                           ;
-;         4 data inputs ; 3                           ;
-; cycloneiii_mac_mult   ; 1                           ;
-; cycloneiii_mac_out    ; 1                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 5                           ;
+;         3 data inputs ; 28                          ;
+;         4 data inputs ; 19                          ;
+; cycloneiii_mac_mult   ; 2                           ;
+; cycloneiii_mac_out    ; 2                           ;
+; cycloneiii_ram_block  ; 48                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.50                        ;
-; Average LUT depth     ; 2.68                        ;
+; Max LUT depth         ; 4.10                        ;
+; Average LUT depth     ; 2.12                        ;
 +-----------------------+-----------------------------+
 
 
@@ -370,10 +892,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sat Jul 12 17:05:54 2025
+    Info: Processing started: Mon Jul 14 22:42:50 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off neural_network_on_fpga -c neural_network_on_fpga
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (10259): Verilog HDL error at neuron.sv(109): constant value overflow File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 109
 Info (12021): Found 1 design units, including 1 entities, in source file neuron.sv
     Info (12023): Found entity 1: neuron File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file mnist_nn.sv
@@ -384,14 +907,78 @@ Info (12021): Found 1 design units, including 1 entities, in source file weight_
     Info (12023): Found entity 1: weight_mem2 File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem2.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file weight_mem0.v
     Info (12023): Found entity 1: weight_mem0 File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem0.v Line: 40
-Info (12127): Elaborating entity "neuron" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at neuron.sv(58): truncated value with size 32 to match size of target (10) File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 58
-Warning (10230): Verilog HDL assignment warning at neuron.sv(77): truncated value with size 32 to match size of target (16) File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 77
-Warning (10034): Output port "product" at neuron.sv(13) has no driver File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-Info (278001): Inferred 1 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 38
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 38
-Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 38
+Info (12021): Found 1 design units, including 1 entities, in source file sigmoid_mem.v
+    Info (12023): Found entity 1: sigmoid_mem File: E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_mem.v Line: 40
+Info (12127): Elaborating entity "mnist_nn" for the top level hierarchy
+Info (12128): Elaborating entity "weight_mem0" for hierarchy "weight_mem0:neuron0_weights" File: E:/Projects/neural-network-on-fpga/quartus_project/mnist_nn.sv Line: 56
+Info (12128): Elaborating entity "altsyncram" for hierarchy "weight_mem0:neuron0_weights|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem0.v Line: 85
+Info (12130): Elaborated megafunction instantiation "weight_mem0:neuron0_weights|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem0.v Line: 85
+Info (12133): Instantiated megafunction "weight_mem0:neuron0_weights|altsyncram:altsyncram_component" with the following parameter: File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem0.v Line: 85
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "./weight_memories/weights_0.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "784"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5ub1.tdf
+    Info (12023): Found entity 1: altsyncram_5ub1 File: E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_5ub1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_5ub1" for hierarchy "weight_mem0:neuron0_weights|altsyncram:altsyncram_component|altsyncram_5ub1:auto_generated" File: c:/intel/quartus/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "weight_mem1" for hierarchy "weight_mem1:neuron1_weights" File: E:/Projects/neural-network-on-fpga/quartus_project/mnist_nn.sv Line: 62
+Info (12128): Elaborating entity "altsyncram" for hierarchy "weight_mem1:neuron1_weights|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem1.v Line: 85
+Info (12130): Elaborated megafunction instantiation "weight_mem1:neuron1_weights|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem1.v Line: 85
+Info (12133): Instantiated megafunction "weight_mem1:neuron1_weights|altsyncram:altsyncram_component" with the following parameter: File: E:/Projects/neural-network-on-fpga/quartus_project/weight_mem1.v Line: 85
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "./weight_memories/weights_1.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "784"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6ub1.tdf
+    Info (12023): Found entity 1: altsyncram_6ub1 File: E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_6ub1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_6ub1" for hierarchy "weight_mem1:neuron1_weights|altsyncram:altsyncram_component|altsyncram_6ub1:auto_generated" File: c:/intel/quartus/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "neuron" for hierarchy "neuron:n0" File: E:/Projects/neural-network-on-fpga/quartus_project/mnist_nn.sv Line: 75
+Info (12128): Elaborating entity "sigmoid_mem" for hierarchy "neuron:n0|sigmoid_mem:sig_mem" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 120
+Info (12128): Elaborating entity "altsyncram" for hierarchy "neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_mem.v Line: 85
+Info (12130): Elaborated megafunction instantiation "neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component" File: E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_mem.v Line: 85
+Info (12133): Instantiated megafunction "neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component" with the following parameter: File: E:/Projects/neural-network-on-fpga/quartus_project/sigmoid_mem.v Line: 85
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "sigmoid_q5_7.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "4096"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "widthad_a" = "12"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_hfa1.tdf
+    Info (12023): Found entity 1: altsyncram_hfa1 File: E:/Projects/neural-network-on-fpga/quartus_project/db/altsyncram_hfa1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_hfa1" for hierarchy "neuron:n0|sigmoid_mem:sig_mem|altsyncram:altsyncram_component|altsyncram_hfa1:auto_generated" File: c:/intel/quartus/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "neuron:n0|Mult0" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 46
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "neuron:n1|Mult0" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 46
+Info (12130): Elaborated megafunction instantiation "neuron:n0|lpm_mult:Mult0" File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 46
+Info (12133): Instantiated megafunction "neuron:n0|lpm_mult:Mult0" with the following parameter: File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 46
     Info (12134): Parameter "LPM_WIDTHA" = "16"
     Info (12134): Parameter "LPM_WIDTHB" = "16"
     Info (12134): Parameter "LPM_WIDTHP" = "32"
@@ -403,35 +990,20 @@ Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following para
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_36t.tdf
     Info (12023): Found entity 1: mult_36t File: E:/Projects/neural-network-on-fpga/quartus_project/db/mult_36t.tdf Line: 29
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "product[0]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[1]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[2]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[3]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[4]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[5]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[6]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[7]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[8]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[9]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[10]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[11]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[12]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[13]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[14]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
-    Warning (13410): Pin "product[15]" is stuck at GND File: E:/Projects/neural-network-on-fpga/quartus_project/neuron.sv Line: 13
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 272 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 51 input pins
-    Info (21059): Implemented 107 output pins
-    Info (21061): Implemented 112 logic cells
-    Info (21062): Implemented 2 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4780 megabytes
-    Info: Processing ended: Sat Jul 12 17:06:02 2025
-    Info: Elapsed time: 00:00:08
+Info (21057): Implemented 320 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
+    Info (21059): Implemented 60 output pins
+    Info (21061): Implemented 189 logic cells
+    Info (21064): Implemented 48 RAM segments
+    Info (21062): Implemented 4 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4799 megabytes
+    Info: Processing ended: Mon Jul 14 22:42:57 2025
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:17
 
 

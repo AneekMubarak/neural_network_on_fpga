@@ -4,367 +4,243 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "out[0]",
+					"name" : "inp_count[0]",
 					"strict" : false
 				},
 				{
-					"name" : "out[1]",
+					"name" : "inp_count[1]",
 					"strict" : false
 				},
 				{
-					"name" : "out[2]",
+					"name" : "inp_count[2]",
 					"strict" : false
 				},
 				{
-					"name" : "out[3]",
+					"name" : "inp_count[3]",
 					"strict" : false
 				},
 				{
-					"name" : "out[4]",
+					"name" : "inp_count[4]",
 					"strict" : false
 				},
 				{
-					"name" : "out[5]",
+					"name" : "inp_count[5]",
 					"strict" : false
 				},
 				{
-					"name" : "out[6]",
+					"name" : "inp_count[6]",
 					"strict" : false
 				},
 				{
-					"name" : "out[7]",
+					"name" : "inp_count[7]",
 					"strict" : false
 				},
 				{
-					"name" : "out[8]",
+					"name" : "inp_count[8]",
 					"strict" : false
 				},
 				{
-					"name" : "out[9]",
+					"name" : "inp_count[9]",
 					"strict" : false
 				},
 				{
-					"name" : "out[10]",
+					"name" : "weight_value_0[0]",
 					"strict" : false
 				},
 				{
-					"name" : "out[11]",
+					"name" : "weight_value_0[1]",
 					"strict" : false
 				},
 				{
-					"name" : "out[12]",
+					"name" : "weight_value_0[2]",
 					"strict" : false
 				},
 				{
-					"name" : "out[13]",
+					"name" : "weight_value_0[3]",
 					"strict" : false
 				},
 				{
-					"name" : "out[14]",
+					"name" : "weight_value_0[4]",
 					"strict" : false
 				},
 				{
-					"name" : "out[15]",
+					"name" : "weight_value_0[5]",
 					"strict" : false
 				},
 				{
-					"name" : "out_ready",
+					"name" : "weight_value_0[6]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[0]",
+					"name" : "weight_value_0[7]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[1]",
+					"name" : "weight_value_0[8]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[2]",
+					"name" : "weight_value_0[9]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[3]",
+					"name" : "weight_value_0[10]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[4]",
+					"name" : "weight_value_0[11]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[5]",
+					"name" : "weight_value_0[12]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[6]",
+					"name" : "weight_value_0[13]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[7]",
+					"name" : "weight_value_0[14]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[8]",
+					"name" : "weight_value_0[15]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[9]",
+					"name" : "weight_value_1[0]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[10]",
+					"name" : "weight_value_1[1]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[11]",
+					"name" : "weight_value_1[2]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[12]",
+					"name" : "weight_value_1[3]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[13]",
+					"name" : "weight_value_1[4]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[14]",
+					"name" : "weight_value_1[5]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[15]",
+					"name" : "weight_value_1[6]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[16]",
+					"name" : "weight_value_1[7]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[17]",
+					"name" : "weight_value_1[8]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[18]",
+					"name" : "weight_value_1[9]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[19]",
+					"name" : "weight_value_1[10]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[20]",
+					"name" : "weight_value_1[11]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[21]",
+					"name" : "weight_value_1[12]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[22]",
+					"name" : "weight_value_1[13]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[23]",
+					"name" : "weight_value_1[14]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[24]",
+					"name" : "weight_value_1[15]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[25]",
+					"name" : "n0_out[0]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[26]",
+					"name" : "n0_out[1]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[27]",
+					"name" : "n0_out[2]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[28]",
+					"name" : "n0_out[3]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[29]",
+					"name" : "n0_out[4]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[30]",
+					"name" : "n0_out[5]",
 					"strict" : false
 				},
 				{
-					"name" : "product_q16_16[31]",
+					"name" : "n0_out[6]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[0]",
+					"name" : "n0_out[7]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[1]",
+					"name" : "n1_out[0]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[2]",
+					"name" : "n1_out[1]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[3]",
+					"name" : "n1_out[2]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[4]",
+					"name" : "n1_out[3]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[5]",
+					"name" : "n1_out[4]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[6]",
+					"name" : "n1_out[5]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[7]",
+					"name" : "n1_out[6]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[8]",
+					"name" : "n1_out[7]",
 					"strict" : false
 				},
 				{
-					"name" : "acc[9]",
+					"name" : "n0_ready",
 					"strict" : false
 				},
 				{
-					"name" : "acc[10]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[11]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[12]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[13]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[14]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[15]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[16]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[17]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[18]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[19]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[20]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[21]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[22]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[23]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[24]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[25]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[26]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[27]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[28]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[29]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[30]",
-					"strict" : false
-				},
-				{
-					"name" : "acc[31]",
-					"strict" : false
-				},
-				{
-					"name" : "count[0]",
-					"strict" : false
-				},
-				{
-					"name" : "count[1]",
-					"strict" : false
-				},
-				{
-					"name" : "count[2]",
-					"strict" : false
-				},
-				{
-					"name" : "count[3]",
-					"strict" : false
-				},
-				{
-					"name" : "count[4]",
-					"strict" : false
-				},
-				{
-					"name" : "count[5]",
-					"strict" : false
-				},
-				{
-					"name" : "count[6]",
-					"strict" : false
-				},
-				{
-					"name" : "count[7]",
-					"strict" : false
-				},
-				{
-					"name" : "count[8]",
-					"strict" : false
-				},
-				{
-					"name" : "count[9]",
+					"name" : "n1_ready",
 					"strict" : false
 				},
 				{
@@ -372,75 +248,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "bias[0]",
+					"name" : "inp_rdy",
 					"strict" : false
 				},
 				{
 					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "bias[15]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[14]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[13]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[12]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[11]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[10]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[9]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[8]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[7]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[6]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[5]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[4]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[3]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[2]",
-					"strict" : false
-				},
-				{
-					"name" : "bias[1]",
-					"strict" : false
-				},
-				{
-					"name" : "inp_ready",
 					"strict" : false
 				},
 				{
@@ -505,70 +317,6 @@
 				},
 				{
 					"name" : "inp_data[15]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[0]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[1]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[2]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[3]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[4]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[5]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[6]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[7]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[8]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[9]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[10]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[11]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[12]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[13]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[14]",
-					"strict" : false
-				},
-				{
-					"name" : "weight[15]",
 					"strict" : false
 				}
 			]

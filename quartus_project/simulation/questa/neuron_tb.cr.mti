@@ -1,9 +1,8 @@
-E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo {1 {vlog -work work -vopt -stats=none E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
+E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neuron_tb.sv {1 {vlog -work work -vopt -sv -stats=none {E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\neuron_tb.sv}
 Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
--- Compiling module neuron
--- Compiling module hard_block
+-- Compiling module neuron_tb
 
 Top level modules:
-	neuron
+	neuron_tb
 
 } {} {}}
