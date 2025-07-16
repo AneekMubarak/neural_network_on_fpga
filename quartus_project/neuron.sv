@@ -1,53 +1,54 @@
+//==============================================================================
+//  Module:        neuron
+//  Description:   Single fixed-point neuron for inference in an MNIST-like NN
+//                 - Multiplies each pixel (Q8.8) with its corresponding weight (Q8.8)
+//                 - Accumulates all products over 784 inputs (28x28)
+//                 - Adds bias (q8.8 shifted to q16.16)
+//                 - Applies sigmoid activation via LUT (sigmoid_mem rom)
+//                 - Outputs 8-bit activation value with ready pulse
+//
+//  Data Format:   Q8.8 fixed-point signed for inputs, weights, and bias
+//                 Q16.16 used internally for accumulation
+//                 Q0.8 output from sigmoid LUT (8-bit unsigned)
+//
+//  Author:        Aneek Mohamed Ruksan
+//  Date:          2025-07-15
+
 module neuron(
 
 	input clk,
 	input reset,
-	input inp_ready,
+	input inp_ready, // high when input is being fed in
 	input signed [15:0] inp_data, //normalized pixel intensity in Q8.8 fixed point form
-	input signed [15:0] weight, bias,
-	output reg [7:0] sigmoid_out,
+	input signed [15:0] weight, bias, // q8.8 
+	output reg [7:0] sigmoid_out, // q0.8
 	output reg sigmoid_ready,
 	
-	//temporary outputs for testing module
-	output reg signed [31:0] product_q16_16,
-	output reg signed [31:0] acc,
-	output reg signed [31:0] acc_final,
-	
-	output reg [9:0] count,
-	output reg [11:0] sigmoid_address,
-	output reg out_ready
-
-
-
-
+	//debug outputs for testing module
+	output reg signed [31:0] product_q16_16, // product of weights and biases for MAC in q_16.16
+	output reg signed [31:0] acc, // running accumulator value
+	output reg signed [31:0] acc_final, // final accumulator after adding biases
+	output reg out_ready // high when all inputs have been processed (used internally)
 );
 
 
 
 //weights and biases need to be accumulated over each input (28 x 28 pixels = 784)
 // at least 10 bits required to store count of 784
+reg [9:0] count;
 
 
 //Using 8.8 fixed notation for all pixel values, weights and biases
 
 
 //reg signed [31:0] product_q16_16;
-//
-//reg signed [31:0] acc;
-//reg [9:0] count;
-
-
-
-
-
-
 
 
 assign product_q16_16 = inp_data * weight;
 
-////assign product = product_q16_16 [23:8]; //drop lower 8 fractional bits
 
 
+//accumulate the product if input is being fed
 always @ (posedge clk)
 if(reset)
 	acc <= 32'b0;
@@ -56,7 +57,7 @@ else if (inp_ready)
 
 
 		
-
+// increment count for all 784 pixel values
 always @ (posedge clk)
 if(reset)
 	count <= 10'b0;
@@ -68,7 +69,7 @@ else if (inp_ready)
 
 	
 
-	
+//create out_ready pulse to access the sigmoid rom	
 always @ (posedge clk)
 if(reset)
 	out_ready <= 0;
@@ -78,7 +79,7 @@ else
 	out_ready <= 0;
 
 
-
+//add the bias to the final accumulator value
 always @ (posedge clk)
 if (reset)
 	acc_final <= 32'd0;
@@ -88,39 +89,37 @@ else
 	acc_final <= 0;
 	
 
-
+reg [11:0] sigmoid_address; //store the address where the sigmoid result is located
 
 	
-// if out_ready pass to sigmoid and get result in next clk cycle
+// if out_ready is high  pass accumulator to sigmoid and get result in the next clk cycle
 
-//reg [11:0] sigmoid_address;
 
+wire signed [15:0] acc_hi = acc_final[31:16]; //the integer part of the accumulator (q_16.16)
 wire signed [11:0] pre_addr = {acc_final[31],acc_final[19:9]}; // preserve sign bit and take  4 int bits and 7 fractional bits.
-
-wire signed [15:0] acc_hi = acc_final[31:16]; //the integer part of the accumulator
-
 
 
 //check if value is greater than 15 or less than -16
 
-// the sigmoid address will always have a value in it, but it is read only the count is reached
+//sigmoid peaks at +/- 1 when input is aroung +/- 15, values outside that range have to clamped to the respective value
 always @ *
 if(acc_hi > 16'sd15)
-	sigmoid_address = 12'sd4095; //clamp to highest val 
+	sigmoid_address = 12'sd4095; //clamp to highest val (0xFF)
 else if (acc_hi < -16'sd16)
-	sigmoid_address = 12'd0; // clamp to lowest val
+	sigmoid_address = 12'd0; // clamp to lowest val (0x0)
 else
-	sigmoid_address = pre_addr + 12'd2048; //offset to get address from [0:4095]
+	sigmoid_address = pre_addr + 12'd2048; //offset to get address from [0:4095] range
 
 
 
+// contains q0.8 formatted sigmoid return values for set of inputs
 sigmoid_mem sig_mem(.address(sigmoid_address),
 							.clock(clk),
 							.q(sigmoid_out),
 							.rden(out_ready));
 							
 						  
-reg out_ready_d;
+reg out_ready_d; // delayed out_ready: required since the ROM takes one extra cycle to return the valu
 
 // create a pulse to inform the main module that sigmoid_out_can be used 
 always @ (posedge clk or posedge reset)
