@@ -1,4 +1,12 @@
 v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n9|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n8|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n7|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n6|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n5|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n4|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n3|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n2|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n1|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
 DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:n0|lpm_mult:Mult0|mult_36t:auto_generated|mac_out2,
 PORT_SWAPPING,PORT_SWAPPING_FINISHED,neuron:n0|lpm_mult:Mult0|mult_36t:auto_generated|mac_mult1,

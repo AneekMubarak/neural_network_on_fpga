@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at mnist_nn.sv(146): always construct contains both blocking and non-blocking assignments File: E:/Projects/neural-network-on-fpga/quartus_project/mnist_nn.sv Line: 146

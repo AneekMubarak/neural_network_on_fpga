@@ -11,6 +11,30 @@ R0
 R1
 R0
 R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R0
+R1
 Z2 !s12c _opt2
 R1
 R2
@@ -117,10 +141,10 @@ n@_opt
 Z10 OL;O;2023.3;77
 R4
 T_opt1
-!s110 1752554818
-VYozWUH@;U9F:H[MEEQC]U1
+!s110 1752628927
+V_zBZ8]YL2ScdX?WF^V^jG3
 R5
-=1-70a8d386e732-6875dd42-48-44e4
+=1-70a8d386e732-6876febe-374-4204
 R1
 R6
 R7
@@ -143,22 +167,22 @@ R10
 R4
 vhard_block
 Z11 2E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
-Z12 !s110 1752554811
+Z12 !s110 1752628920
 !i10b 1
-!s100 4<>o_;bnFgg@dndNZS9Sj1
-ImI<:<LONXolAmQLjcAX>00
+!s100 lhe4jbUln>RONn3CCkC>C3
+I0R5WcAJEGj@W@RcFLa]<h3
 Z13 dE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa
-Z14 w1752554599
+Z14 w1752628824
 Z15 8E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
 Z16 FE:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo
-!i122 130
-L0 8748 34
+!i122 167
+L0 39771 34
 Z17 VDg1SIo80bB@j0V0VzS_@n1
 Z18 OL;L;2023.3;77
 r1
 !s85 0
 31
-Z19 !s108 1752554811.000000
+Z19 !s108 1752628919.000000
 Z20 !s107 E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
 Z21 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Projects/neural-network-on-fpga/quartus_project/simulation/questa/neural_network_on_fpga.vo|
 !i113 0
@@ -168,14 +192,14 @@ vmnist_nn
 R11
 R12
 !i10b 1
-!s100 _ZnzI4JMkDm@<jVjoB2oW0
-I^a6=L4M]1OTP<5bf20^[Y3
+!s100 @URAHDUFFVR37TkE`V>DL2
+I`R[7fX_Cc:[kRB?VfEddh0
 R13
 R14
 R15
 R16
-!i122 130
-L0 32 8715
+!i122 167
+L0 32 39738
 R17
 R18
 r1
@@ -192,21 +216,21 @@ vmnist_nn_tb
 Z23 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
 R12
 !i10b 1
-!s100 CaVo:IMDm6B7SIa>mAC4C3
-Ic`GZUJMh_]dB?2P?QUQ>?1
+!s100 6WIfY6Z`N;?g7le>2NX>H0
+IWGz_=8RY@2`jhYLB@fa9Z2
 S1
 R13
-w1752554807
+w1752628901
 8E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv
 FE:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv
-!i122 131
-L0 5 861
+!i122 168
+L0 3 113
 R17
 R18
 r1
 !s85 0
 31
-R19
+!s108 1752628920.000000
 !s107 E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|E:\Projects\neural-network-on-fpga\quartus_project\simulation\questa\mnist_nn_tb.sv|
 !i113 0
